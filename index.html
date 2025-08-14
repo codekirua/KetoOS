@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KetoOS - macOS Leopard Style</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/windows.css">
+    <link rel="stylesheet" href="styles/boot.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Boot Screen -->
+    <div id="boot-screen" class="boot-screen">
+        <div class="boot-content">
+            <div class="apple-logo">🍎</div>
+            <div class="boot-text">Starting KetoOS...</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Background -->
+    <div id="desktop" class="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" data-app="finder">
+                <div class="icon-image">📁</div>
+                <div class="icon-label">Macintosh HD</div>
+            </div>
+            <div class="desktop-icon" data-app="trash">
+                <div class="icon-image">🗑️</div>
+                <div class="icon-label">Trash</div>
+            </div>
+        </div>
+
+        <!-- Menu Bar -->
+        <div id="menubar" class="menubar">
+            <div class="menu-left">
+                <div class="apple-menu">🍎</div>
+                <div class="app-menu">
+                    <span class="menu-item">Finder</span>
+                    <span class="menu-item">File</span>
+                    <span class="menu-item">Edit</span>
+                    <span class="menu-item">View</span>
+                    <span class="menu-item">Go</span>
+                    <span class="menu-item">Window</span>
+                    <span class="menu-item">Help</span>
+                </div>
+            </div>
+            <div class="menu-right">
+                <div class="menu-item">📶</div>
+                <div class="menu-item">🔋</div>
+                <div class="menu-item" id="clock">12:00 PM</div>
+            </div>
+        </div>
+
+        <!-- Dock -->
+        <div id="dock" class="dock">
+            <div class="dock-container">
+                <div class="dock-item" data-app="finder" data-active="false">
+                    <div class="dock-icon">📁</div>
+                    <div class="dock-label">Finder</div>
+                </div>
+                <div class="dock-item" data-app="safari" data-active="false">
+                    <div class="dock-icon">🌐</div>
+                    <div class="dock-label">Safari</div>
+                </div>
+                <div class="dock-item" data-app="mail" data-active="false">
+                    <div class="dock-icon">✉️</div>
+                    <div class="dock-label">Mail</div>
+                </div>
+                <div class="dock-item" data-app="photos" data-active="false">
+                    <div class="dock-icon">📷</div>
+                    <div class="dock-label">Photos</div>
+                </div>
+                <div class="dock-item" data-app="music" data-active="false">
+                    <div class="dock-icon">🎵</div>
+                    <div class="dock-label">Music</div>
+                </div>
+                <div class="dock-item" data-app="calculator" data-active="false">
+                    <div class="dock-icon">🧮</div>
+                    <div class="dock-label">Calculator</div>
+                </div>
+                <div class="dock-item" data-app="terminal" data-active="false">
+                    <div class="dock-icon">💻</div>
+                    <div class="dock-label">Terminal</div>
+                </div>
+                <div class="dock-item" data-app="trash" data-active="false">
+                    <div class="dock-icon">🗑️</div>
+                    <div class="dock-label">Trash</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Context Menu -->
+        <div id="context-menu" class="context-menu">
+            <div class="context-item">New Folder</div>
+            <div class="context-item">Get Info</div>
+            <div class="context-item">Change Desktop Background...</div>
+        </div>
+    </div>
+
+    <!-- Window Templates -->
+    <template id="window-template">
+        <div class="window" data-app="">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <div class="window-control close"></div>
+                    <div class="window-control minimize"></div>
+                    <div class="window-control maximize"></div>
+                </div>
+                <div class="window-title"></div>
+            </div>
+            <div class="window-content"></div>
+        </div>
+    </template>
+
+    <!-- App Content Templates -->
+    <template id="finder-template">
+        <div class="finder-app">
+            <div class="finder-toolbar">
+                <div class="toolbar-button">Back</div>
+                <div class="toolbar-button">Forward</div>
+                <div class="toolbar-button">View</div>
+            </div>
+            <div class="finder-sidebar">
+                <div class="sidebar-item">Favorites</div>
+                <div class="sidebar-item">Applications</div>
+                <div class="sidebar-item">Desktop</div>
+                <div class="sidebar-item">Documents</div>
+                <div class="sidebar-item">Downloads</div>
+            </div>
+            <div class="finder-content">
+                <div class="file-item">
+                    <div class="file-icon">📄</div>
+                    <div class="file-name">Document.txt</div>
+                </div>
+                <div class="file-item">
+                    <div class="file-icon">📁</div>
+                    <div class="file-name">Folder</div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="safari-template">
+        <div class="safari-app">
+            <div class="safari-toolbar">
+                <div class="url-bar">
+                    <input type="text" value="https://www.apple.com" placeholder="Enter website name or address">
+                </div>
+                <div class="safari-controls">
+                    <div class="safari-button">←</div>
+                    <div class="safari-button">→</div>
+                    <div class="safari-button">⟳</div>
+                </div>
+            </div>
+            <div class="safari-content">
+                <div class="browser-placeholder">
+                    <div class="placeholder-text">Welcome to Safari</div>
+                    <div class="placeholder-subtext">Enter a URL to start browsing</div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="calculator-template">
+        <div class="calculator-app">
+            <div class="calculator-display">0</div>
+            <div class="calculator-buttons">
+                <div class="calc-button">C</div>
+                <div class="calc-button">±</div>
+                <div class="calc-button">%</div>
+                <div class="calc-button operator">÷</div>
+                <div class="calc-button">7</div>
+                <div class="calc-button">8</div>
+                <div class="calc-button">9</div>
+                <div class="calc-button operator">×</div>
+                <div class="calc-button">4</div>
+                <div class="calc-button">5</div>
+                <div class="calc-button">6</div>
+                <div class="calc-button operator">-</div>
+                <div class="calc-button">1</div>
+                <div class="calc-button">2</div>
+                <div class="calc-button">3</div>
+                <div class="calc-button operator">+</div>
+                <div class="calc-button zero">0</div>
+                <div class="calc-button">.</div>
+                <div class="calc-button operator">=</div>
+            </div>
+        </div>
+    </template>
+
+    <template id="terminal-template">
+        <div class="terminal-app">
+            <div class="terminal-header">
+                <div class="terminal-title">Terminal</div>
+            </div>
+            <div class="terminal-content">
+                <div class="terminal-output">
+                    <div class="terminal-line">Last login: Mon Jan 1 12:00:00 on ttys000</div>
+                    <div class="terminal-line">KetoOS:~ user$ <span class="cursor">█</span></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <script src="js/config-fallback.js"></script>
+    <script src="js/os-fallback.js"></script>
+    <script src="js/windows-fallback.js"></script>
+    <script src="js/dock-fallback.js"></script>
+    <script src="js/menubar-fallback.js"></script>
+    <script src="js/apps-fallback.js"></script>
+    <script src="js/context-menu-fallback.js"></script>
+    <script src="js/boot-fallback.js"></script>
+</body>
+</html>
