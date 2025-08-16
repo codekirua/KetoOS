@@ -6,7 +6,7 @@ import {
   getModelInstance,
 } from "./utils/aiModels";
 import {
-  RYO_PERSONA_INSTRUCTIONS,
+  KETO_PERSONA_INSTRUCTIONS,
   ANSWER_STYLE_INSTRUCTIONS,
   CODE_GENERATION_INSTRUCTIONS,
   CHAT_INSTRUCTIONS,
@@ -128,7 +128,7 @@ interface SystemState {
 }
 
 // Allowed origins for API requests
-const ALLOWED_ORIGINS = new Set(["https://os.ryo.lu", "http://localhost:3000"]);
+const ALLOWED_ORIGINS = new Set(["https://os.keto.kh", "http://localhost:3000"]);
 
 // Function to validate request origin
 // Only allow explicit origins defined in ALLOWED_ORIGINS – no wildcard ports or IP fallbacks
@@ -149,7 +149,7 @@ export const config = {
 // Unified static prompt with all instructions
 const STATIC_SYSTEM_PROMPT = [
   ANSWER_STYLE_INSTRUCTIONS,
-  RYO_PERSONA_INSTRUCTIONS,
+  KETO_PERSONA_INSTRUCTIONS,
   CHAT_INSTRUCTIONS,
   TOOL_USAGE_INSTRUCTIONS,
   CODE_GENERATION_INSTRUCTIONS,
@@ -179,7 +179,7 @@ const generateDynamicSystemPrompt = (systemState?: SystemState) => {
     day: "numeric",
   });
 
-  const ryoTimeZone = "America/Los_Angeles";
+  const ketoTimeZone = "America/Los_Angeles";
 
   if (!systemState) return "";
 
@@ -188,7 +188,7 @@ const generateDynamicSystemPrompt = (systemState?: SystemState) => {
 Current User: ${systemState.username || "you"}
 
 ## TIME & LOCATION
-Ryo Time: ${timeString} on ${dateString} (${ryoTimeZone})`;
+Keto Time: ${timeString} on ${dateString} (${ketoTimeZone})`;
 
   if (systemState.userLocalTime) {
     prompt += `
@@ -346,7 +346,7 @@ ${index + 1}. ${instance.title}${unsavedMark} (ID: ${instance.instanceId})`;
     prompt += `\n\n<chat_room_reply_instructions>
 ## CHAT ROOM CONTEXT
 Room ID: ${systemState.chatRoomContext.roomId}
-Your Role: Respond as 'ryo' in this IRC-style chat room
+Your Role: Respond as 'keto' in this IRC-style chat room
 Response Style: Use extremely concise responses
 
 Recent Conversation:
@@ -543,7 +543,7 @@ export default async function handler(req: Request) {
     // ---------------------------
     // Rate-limit & auth checks
     // ---------------------------
-    // Validate authentication (all users, including "ryo", must present a valid token)
+    // Validate authentication (all users, including "keto", must present a valid token)
     const validationResult = await validateAuthToken(username, authToken);
 
     // If a username was provided but the token is missing/invalid, reject the request early
@@ -885,7 +885,7 @@ export default async function handler(req: Request) {
             id: z
               .string()
               .describe(
-                "The YouTube video ID or any supported URL format (YouTube URL, os.ryo.lu/ipod/:id, etc.) of the song to add and play."
+                "The YouTube video ID or any supported URL format (YouTube URL, os.keto.kh/ipod/:id, etc.) of the song to add and play."
               ),
           }),
         },
