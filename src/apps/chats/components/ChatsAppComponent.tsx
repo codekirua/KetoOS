@@ -23,7 +23,7 @@ import {
   type ChatRoom,
 } from "@/types/chat";
 import { Button } from "@/components/ui/button";
-import { useRyoChat } from "../hooks/useRyoChat";
+import { useKetoChat } from "../hooks/useKetoChat";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getPrivateRoomDisplayName } from "@/utils/chat";
@@ -172,8 +172,8 @@ export function ChatsAppComponent({
     (remainingCount > 0 ? `, ${remainingCount}+` : "");
 
   // Use the @keto chat hook
-  const { isRyoLoading, stopRyo, handleRyoMention, detectAndProcessMention } =
-    useRyoChat({
+  const { isKetoLoading, stopKeto, handleKetoMention, detectAndProcessMention } =
+    useKetoChat({
       currentRoomId,
       onScrollToBottom: () => setScrollToBottomTrigger((prev) => prev + 1),
       roomMessages: currentRoomMessages?.map((msg: AppChatMessage) => ({
@@ -236,7 +236,7 @@ export function ChatsAppComponent({
           sendRoomMessage(input);
 
           // Then send to AI (doesn't affect input clearing)
-          handleRyoMention(messageContent);
+          handleKetoMention(messageContent);
 
           // Trigger scroll
           setScrollToBottomTrigger((prev) => prev + 1);
@@ -263,7 +263,7 @@ export function ChatsAppComponent({
       handleAiSubmit,
       input,
       handleInputChange,
-      handleRyoMention,
+      handleKetoMention,
       detectAndProcessMention,
     ]
   );
@@ -290,8 +290,8 @@ export function ChatsAppComponent({
   // Combined stop function for both AI chat and @keto mentions
   const handleStop = useCallback(() => {
     stop(); // Stop regular AI chat
-    stopRyo(); // Stop @keto chat
-  }, [stop, stopRyo]);
+    stopKeto(); // Stop @keto chat
+  }, [stop, stopKeto]);
 
   // Font size handlers using store action
   const handleIncreaseFontSize = useCallback(() => {
@@ -500,7 +500,7 @@ export function ChatsAppComponent({
         ...msg,
         // Ensure createdAt is a Date object if it exists, otherwise undefined
         createdAt: msg.createdAt ? new Date(msg.createdAt) : undefined,
-        username: msg.role === "user" ? username || "You" : "Ryo",
+        username: msg.role === "user" ? username || "You" : "Keto",
       }));
 
   return (
@@ -725,7 +725,7 @@ export function ChatsAppComponent({
                     messages={currentMessagesToDisplay}
                     isLoading={
                       (isLoading && !currentRoomId) ||
-                      (!!currentRoomId && isRyoLoading)
+                      (!!currentRoomId && isKetoLoading)
                     }
                     error={!currentRoomId ? error : undefined}
                     onRetry={reload}
@@ -792,7 +792,7 @@ export function ChatsAppComponent({
                       return (
                         <ChatInput
                           input={input}
-                          isLoading={isLoading || isRyoLoading}
+                          isLoading={isLoading || isKetoLoading}
                           isForeground={isForeground}
                           onInputChange={handleInputChange}
                           onSubmit={handleSubmit}
