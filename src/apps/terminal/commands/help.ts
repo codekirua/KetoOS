@@ -29,7 +29,7 @@ terminal
   cowsay <text>    a talking cow
 
 assistant
-  keto <prompt>     chat with keto
+  keto <prompt>    chat with keto
   ai <prompt>      chat with keto (alias)
   chat <prompt>    chat with keto (alias)
 
