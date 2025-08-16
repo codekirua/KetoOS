@@ -227,7 +227,7 @@ interface ChatMessagesProps {
   onClear?: () => void;
   isRoomView: boolean; // Indicates if this is a room view (vs Ryo chat)
   roomId?: string; // Needed for message deletion calls
-  isAdmin?: boolean; // Whether the current user has admin privileges (e.g. username === "ryo")
+  isAdmin?: boolean; // Whether the current user has admin privileges (e.g. username === "keto")
   username?: string; // Current client username (needed for delete request)
   onMessageDeleted?: (messageId: string) => void; // Callback when a message is deleted locally
   fontSize: number; // Add font size prop
@@ -605,8 +605,8 @@ function ChatMessagesContent({
         }
         
         // Check for aquarium token in chat room messages
-        // In chat rooms, messages from ryo don't have a role, just a username
-        if ((message.role === "human" || message.username === "ryo") && hasAquariumToken) {
+        // In chat rooms, messages from keto don't have a role, just a username
+        if ((message.role === "human" || message.username === "keto") && hasAquariumToken) {
           hasAquarium = true;
         }
 
