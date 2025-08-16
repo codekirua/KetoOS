@@ -45,26 +45,26 @@ Runs on desktop, tablet, and mobile.
 
 ## 📂 Project Structure
 
-project/
-├── public/ # Static assets
-│ ├── assets/ # Videos, sounds, media
-│ ├── fonts/ # Fonts
-│ ├── icons/ # UI icons
-│ ├── patterns/ # Patterns
-│ └── wallpapers/ # Wallpapers
-├── src/
-│ ├── apps/ # Individual applications
-│ ├── components/ # Shared React components
-│ ├── config/ # Configuration
-│ ├── contexts/ # React contexts
-│ ├── hooks/ # Custom hooks
-│ ├── lib/ # Libraries and utils
-│ ├── stores/ # State management
-│ ├── styles/ # Styling
-│ ├── types/ # TypeScript definitions
-│ └── utils/ # Utilities
-├── api/ # API endpoints
-└── config files # vite.config.ts, tsconfig.json, package.json
+- **project/**
+  - **public/** – Static assets  
+    - `assets/` – Videos, sounds, media  
+    - `fonts/` – Fonts  
+    - `icons/` – UI icons  
+    - `patterns/` – Patterns  
+    - `wallpapers/` – Wallpapers  
+  - **src/**  
+    - `apps/` – Individual applications  
+    - `components/` – Shared React components  
+    - `config/` – Configuration  
+    - `contexts/` – React contexts  
+    - `hooks/` – Custom hooks  
+    - `lib/` – Libraries and utilities  
+    - `stores/` – State management  
+    - `styles/` – Styling  
+    - `types/` – TypeScript definitions  
+    - `utils/` – Helper functions  
+  - **api/** – API endpoints  
+  - **config files** – `vite.config.ts`, `tsconfig.json`, `package.json`
 
 ---
 
@@ -80,10 +80,11 @@ KetoOS is built with:
 
 ### Scripts
 ```bash
-bun dev        # start development server
-bun run build  # build for production
-bun run lint   # run ESLint
+bun dev         # start development server
+bun run build   # build for production
+bun run lint    # run ESLint
 bun run preview # preview production build
+
 
 ---
 
@@ -95,8 +96,9 @@ This project is licensed under the AGPL-3.0 License – see LICENSE for details.
 
 🤝 Contributing
 
-Contributions are welcome! Please submit a Pull Request.
+This way, the **Project Structure is now GitHub-native Markdown**, so it renders as a collapsible tree-style list instead of a plain code block.  
 
-Would you like me to also add **badges** (like build status, license, version, etc.) at the top so it looks more like a polished GitHub project page?
+Do you also want me to add **collapsible sections** (`<details>` tags) so people can expand/collapse each part of the project tree? That’s a common trick in polished GitHub READMEs.
+
 
 
