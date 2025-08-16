@@ -1355,7 +1355,7 @@ export function useAiChat(onPromptSetUsername?: () => void) {
     const initialMessage: Message = {
       id: "1", // Ensure consistent ID for the initial message
       role: "assistant",
-      content: "👋 hey! i'm ryo. ask me anything!",
+      content: "👋 hey! i'm Keto. ask me anything!",
       createdAt: new Date(),
     };
     speechProgressRef.current[initialMessage.id] =
