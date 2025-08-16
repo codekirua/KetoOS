@@ -213,7 +213,7 @@ export const useVideoStore = create<VideoStoreState>()(
       },
     }),
     {
-      name: "ryos:videos",
+      name: "KetoOS:videos",
       version: CURRENT_VIDEO_STORE_VERSION,
       migrate: () => {
         console.log(
