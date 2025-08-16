@@ -68,37 +68,28 @@ Runs on desktop, tablet, and mobile.
 
 ---
 
-## ⚙️ Development
+## ⚙️ Development / License / Contributing
 
+```markdown
+### Development
 KetoOS is built with:  
-- **TypeScript** – type safety  
-- **ESLint** – linting  
-- **Tailwind CSS** – utility-first styling  
-- **shadcn/ui** – UI components (Radix primitives)  
-- **Lucide** – icons  
-- **Vercel** – deployment  
+- TypeScript – type safety  
+- ESLint – linting  
+- Tailwind CSS – utility-first styling  
+- shadcn/ui – UI components (Radix primitives)  
+- Lucide – icons  
+- Vercel – deployment  
 
-### Scripts
-```bash
-bun dev         # start development server
-bun run build   # build for production
-bun run lint    # run ESLint
-bun run preview # preview production build
-
+#### Scripts
+bun dev         # start development server  
+bun run build   # build for production  
+bun run lint    # run ESLint  
+bun run preview # preview production build  
 
 ---
 
-📜 License
+## 📜 License
+This project is licensed under the AGPL-3.0 License – see LICENSE for details.  
 
-This project is licensed under the AGPL-3.0 License – see LICENSE for details.
-
----
-
-🤝 Contributing
-
-This way, the **Project Structure is now GitHub-native Markdown**, so it renders as a collapsible tree-style list instead of a plain code block.  
-
-Do you also want me to add **collapsible sections** (`<details>` tags) so people can expand/collapse each part of the project tree? That’s a common trick in polished GitHub READMEs.
-
-
-
+## 🤝 Contributing
+Contributions are welcome! Please submit a Pull Request.  
