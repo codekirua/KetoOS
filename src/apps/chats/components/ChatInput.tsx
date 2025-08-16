@@ -115,9 +115,9 @@ export function ChatInput({
   // Get the model display name for debug information
   const modelDisplayName = aiModel ? AI_MODELS[aiModel]?.name : null;
 
-  // Check if user is typing @ryo
+  // Check if user is typing @keto
   const isTypingRyoMention =
-    isInChatRoom && (input.startsWith("@ryo ") || input === "@ryo");
+    isInChatRoom && (input.startsWith("@keto ") || input === "@keto");
 
   useEffect(() => {
     // Check if device has touch capability
@@ -225,7 +225,7 @@ export function ChatInput({
   const handleMentionClick = () => {
     let newValue = input;
 
-    if (input.startsWith("@ryo ")) {
+    if (input.startsWith("@keto ")) {
       // Already properly mentioned, just focus
       inputRef.current?.focus();
       // Position cursor at the end
@@ -238,12 +238,12 @@ export function ChatInput({
         }
       }, 0);
       return;
-    } else if (input.startsWith("@ryo")) {
-      // Has @ryo but missing space
-      newValue = input.replace("@ryo", "@ryo ");
+    } else if (input.startsWith("@keto")) {
+      // Has @keto but missing space
+      newValue = input.replace("@keto", "@keto ");
     } else {
-      // Add @ryo at the beginning
-      newValue = `@ryo ${input}`.trim() + (input.endsWith(" ") ? "" : " ");
+      // Add @keto at the beginning
+      newValue = `@keto ${input}`.trim() + (input.endsWith(" ") ? "" : " ");
     }
 
     const event = {
