@@ -29,9 +29,9 @@ terminal
   cowsay <text>    a talking cow
 
 assistant
-  ryo <prompt>     chat with ryo
-  ai <prompt>      chat with ryo (alias)
-  chat <prompt>    chat with ryo (alias)
+  keto <prompt>     chat with keto
+  ai <prompt>      chat with keto (alias)
+  chat <prompt>    chat with keto (alias)
 
 `,
     isError: false,
