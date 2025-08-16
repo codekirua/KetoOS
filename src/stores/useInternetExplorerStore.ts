@@ -13,8 +13,8 @@ export interface Favorite {
 
 // Define a constant for domains that bypass the proxy when in "now" mode
 export const DIRECT_PASSTHROUGH_DOMAINS = [
-  "baby-cursor.ryo.lu",
-  "os.ryo.lu",
+  "baby-cursor.Keto.Kh",
+  "os.keto.kh",
   "hcsimulator.com",
   "os.rocorgi.wang",
 ];
@@ -74,7 +74,7 @@ export const DEFAULT_TIMELINE: { [year: string]: string } = {
   "2040":
     "AI city governance. Quantum-profit compute. Desktop molecular printers. Smart-dust logistics. Neuromorphic cores. Tactile-holo rooms. Life+20 gene edits. Cancer cured. Orbital-solar farms.",
   "2050":
-    "Cloud mind-backups. Digital-heir laws. Sentient-AI rights fight. Medical neural-dust. Photoreal AR lenses. Designer embryos. Age-decel commonplace. Fusion grids dominant.",
+    "Cloud mind-backups. Digital-heir laws. Sentient-AI rights fight. Medical neural-dust. Photoreal AR lenses. Designer embKetoOS. Age-decel commonplace. Fusion grids dominant.",
   "2060":
     "Human-AI merge wave. Symbiont organs stock. Quantum neural mesh. Home matter assembler. Age reversal < 40. 150-yr median lives. Zero-carbon fusion grid.",
   "2070":
@@ -112,9 +112,9 @@ export const DEFAULT_FAVORITES: Favorite[] = [
     isDirectory: false,
   },
   {
-    title: "Ryo",
-    url: "https://ryo.lu",
-    favicon: "https://www.google.com/s2/favicons?domain=ryo.lu&sz=32",
+    title: "Keto",
+    url: "https://keto.kh",
+    favicon: "https://www.google.com/s2/favicons?domain=keto.lu&sz=32",
     year: "current",
     isDirectory: false,
   },
@@ -249,8 +249,8 @@ export const DEFAULT_FAVORITES: Favorite[] = [
     children: [
       {
         title: "Baby Cursor",
-        url: "https://baby-cursor.ryo.lu",
-        favicon: "https://www.google.com/s2/favicons?domain=ryo.lu&sz=32",
+        url: "https://baby-cursor.keto.kh",
+        favicon: "https://www.google.com/s2/favicons?domain=keto.lu&sz=32",
         year: "current",
         isDirectory: false,
       },
@@ -830,7 +830,7 @@ export const useInternetExplorerStore = create<InternetExplorerStore>()(
       updateBrowserState: () => {},
     }),
     {
-      name: "ryos:internet-explorer",
+      name: "KetoOS:internet-explorer",
       version: CURRENT_IE_STORE_VERSION,
       partialize: (state) => ({
         url: state.url,
