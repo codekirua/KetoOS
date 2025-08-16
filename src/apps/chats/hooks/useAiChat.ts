@@ -1408,7 +1408,7 @@ export function useAiChat(onPromptSetUsername?: () => void) {
                 minute: "2-digit",
               })
             : "";
-          const sender = msg.role === "user" ? username || "You" : "Ryo";
+          const sender = msg.role === "user" ? username || "You" : "Keto";
           return `**${sender}** (${time}):\n${msg.content}`;
         })
         .join("\n\n");
