@@ -171,7 +171,7 @@ export function ChatsAppComponent({
     displayNames.join(", ") +
     (remainingCount > 0 ? `, ${remainingCount}+` : "");
 
-  // Use the @ryo chat hook
+  // Use the @keto chat hook
   const { isRyoLoading, stopRyo, handleRyoMention, detectAndProcessMention } =
     useRyoChat({
       currentRoomId,
@@ -222,7 +222,7 @@ export function ChatsAppComponent({
       if (currentRoomId && username) {
         const trimmedInput = input.trim();
 
-        // Detect if this is an @ryo mention
+        // Detect if this is an @keto mention
         const { isMention, messageContent } =
           detectAndProcessMention(trimmedInput);
 
@@ -232,7 +232,7 @@ export function ChatsAppComponent({
             target: { value: "" },
           } as React.ChangeEvent<HTMLInputElement>);
 
-          // Send the user's message to the chat room first (showing @ryo)
+          // Send the user's message to the chat room first (showing @keto)
           sendRoomMessage(input);
 
           // Then send to AI (doesn't affect input clearing)
@@ -287,10 +287,10 @@ export function ChatsAppComponent({
     setScrollToBottomTrigger((prev) => prev + 1);
   }, [handleNudge]);
 
-  // Combined stop function for both AI chat and @ryo mentions
+  // Combined stop function for both AI chat and @keto mentions
   const handleStop = useCallback(() => {
     stop(); // Stop regular AI chat
-    stopRyo(); // Stop @ryo chat
+    stopRyo(); // Stop @keto chat
   }, [stop, stopRyo]);
 
   // Font size handlers using store action
@@ -512,7 +512,7 @@ export function ChatsAppComponent({
             ? currentRoom.type === "private"
               ? getPrivateRoomDisplayName(currentRoom, username)
               : `#${currentRoom.name}`
-            : "@ryo"
+            : "@keto"
         }
         onClose={onClose}
         isForeground={isForeground}
@@ -658,7 +658,7 @@ export function ChatsAppComponent({
                         ? currentRoom.type === "private"
                           ? getPrivateRoomDisplayName(currentRoom, username)
                           : `#${currentRoom.name}`
-                        : "@ryo"}
+                        : "@keto"}
                     </h2>
                     <ChevronDown className="h-3 w-3 transform transition-transform duration-200 text-neutral-400" />
                   </Button>
@@ -672,7 +672,7 @@ export function ChatsAppComponent({
                     )}
                 </div>
                 <div className="flex items-center gap-2">
-                  {/* Create Account button shown only in @ryo view when no username is set */}
+                  {/* Create Account button shown only in @keto view when no username is set */}
                   {!currentRoom && !username && (
                     <Button
                       variant="ghost"
@@ -680,12 +680,12 @@ export function ChatsAppComponent({
                       className="flex items-center gap-1 px-2 py-1 h-7"
                     >
                       <span className="font-geneva-12 text-[11px] text-orange-600 hover:text-orange-700">
-                        Login to ryOS
+                        Login to KetoOS
                       </span>
                     </Button>
                   )}
 
-                  {/* Clear chat button shown only in @ryo (no current room) */}
+                  {/* Clear chat button shown only in @keto (no current room) */}
                   {!currentRoom && (
                     <Button
                       variant="ghost"
@@ -721,7 +721,7 @@ export function ChatsAppComponent({
                   ref={messagesContainerRef}
                 >
                   <ChatMessages
-                    key={currentRoomId || "ryo"}
+                    key={currentRoomId || "keto"}
                     messages={currentMessagesToDisplay}
                     isLoading={
                       (isLoading && !currentRoomId) ||
@@ -756,7 +756,7 @@ export function ChatsAppComponent({
                 >
                   {/* Show "Create Account" button in two cases:
                       1. In a chat room without username
-                      2. In @ryo chat when rate limit is hit for anonymous users */}
+                      2. In @keto chat when rate limit is hit for anonymous users */}
                   {(currentRoomId && !username) ||
                   (!currentRoomId && needsUsername && !username) ? (
                     isMacTheme ? (
