@@ -46,13 +46,13 @@ export const aiCommand: Command = {
       terminalStore.setInitialAiPrompt(initialPrompt);
       
       return {
-        output: `ask ryo anything. type 'exit' to return to terminal.\n→ from your command: ${initialPrompt}`,
+        output: `ask Keto anything. type 'exit' to return to terminal.\n→ from your command: ${initialPrompt}`,
         isError: false,
       };
     }
     
     return {
-      output: `ask ryo anything. type 'exit' to return to terminal.`,
+      output: `ask Keto anything. type 'exit' to return to terminal.`,
       isError: false,
     };
   },
@@ -66,5 +66,5 @@ export const chatCommand: Command = {
 
 export const ryoCommand: Command = {
   ...aiCommand,
-  name: "ryo",
+  name: "Keto",
 };
