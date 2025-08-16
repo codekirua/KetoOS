@@ -497,9 +497,9 @@ export const useIpodStore = create<IpodState>()(
           try {
             const url = new URL(input);
 
-            // Handle os.ryo.lu/ipod/:id format
+            // Handle os.keto.kh/ipod/:id format
             if (
-              url.hostname === "os.ryo.lu" &&
+              url.hostname === "os.keto.kh" &&
               url.pathname.startsWith("/ipod/")
             ) {
               return url.pathname.split("/")[2] || null;
@@ -699,7 +699,7 @@ export const useIpodStore = create<IpodState>()(
       },
     }),
     {
-      name: "ryos:ipod", // Unique name for localStorage persistence
+      name: "KetoOS:ipod", // Unique name for localStorage persistence
       version: CURRENT_IPOD_STORE_VERSION, // Set the current version
       partialize: (state) => ({
         // Keep tracks and originalOrder here initially for migration
