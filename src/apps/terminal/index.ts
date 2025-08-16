@@ -52,10 +52,10 @@ export const TerminalApp: BaseApp = {
     name: "Terminal",
     version: "1.0",
     creator: {
-      name: "Ryo Lu",
-      url: "https://ryo.lu",
+      name: "Keto Khamkhounmavong",
+      url: "https://keto.kh",
     },
-    github: "https://github.com/ryokun6/ryos",
+    github: "https://github.com/codekirua/KetoOS",
     icon: "/icons/default/terminal.png",
   },
 };
