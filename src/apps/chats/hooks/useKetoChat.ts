@@ -86,7 +86,7 @@ const getSystemState = () => {
   };
 };
 
-interface UseRyoChatProps {
+interface UseKetoChatProps {
   currentRoomId: string | null;
   onScrollToBottom: () => void;
   roomMessages?: Array<{
@@ -97,11 +97,11 @@ interface UseRyoChatProps {
   }>;
 }
 
-export function useRyoChat({
+export function useKetoChat({
   currentRoomId,
   onScrollToBottom,
   roomMessages = [],
-}: UseRyoChatProps) {
+}: UseKetoChatProps) {
   // Pull current auth credentials from store (reactive)
   const { authToken, username } = useChatsStore();
 
@@ -112,11 +112,11 @@ export function useRyoChat({
     authHeaders["X-Username"] = username;
   }
 
-  // Create a separate AI chat hook for @ryo mentions in chat rooms
+  // Create a separate AI chat hook for @keto mentions in chat rooms
   const {
-    messages: ryoMessages,
-    isLoading: isRyoLoading,
-    stop: stopRyo,
+    messages: ketoMessages,
+    isLoading: isKetoLoading,
+    stop: stopKeto,
   } = useChat({
     maxSteps: 1,
     body: {
@@ -126,7 +126,7 @@ export function useRyoChat({
     // We no longer stream client-side AI to avoid spoofing. onFinish unused.
   });
 
-  const handleRyoMention = useCallback(
+  const handleKetoMention = useCallback(
     async (messageContent: string) => {
       // Get recent chat room messages as context (last 20 messages)
       const recentMessages = roomMessages
@@ -144,14 +144,14 @@ export function useRyoChat({
         },
       };
 
-      // Call server to generate and insert a @ryo reply using authenticated request
+      // Call server to generate and insert a @keto reply using authenticated request
       const headers: HeadersInit = { "Content-Type": "application/json" };
       if (authToken && username) {
         headers["Authorization"] = `Bearer ${authToken}`;
         headers["X-Username"] = username;
       }
 
-      await fetch(`/api/chat-rooms?action=generateRyoReply`, {
+      await fetch(`/api/chat-rooms?action=generateKetoReply`, {
         method: "POST",
         headers,
         body: JSON.stringify({
@@ -168,12 +168,12 @@ export function useRyoChat({
 
   const detectAndProcessMention = useCallback(
     (input: string): { isMention: boolean; messageContent: string } => {
-      if (input.startsWith("@ryo ")) {
-        // Extract the message content after @ryo
+      if (input.startsWith("@keto ")) {
+        // Extract the message content after @keto
         const messageContent = input.substring(4).trim();
         return { isMention: true, messageContent };
-      } else if (input === "@ryo") {
-        // If they just typed @ryo without a message, treat it as a nudge
+      } else if (input === "@keto") {
+        // If they just typed @keto without a message, treat it as a nudge
         return { isMention: true, messageContent: "👋 *nudge sent*" };
       }
       return { isMention: false, messageContent: "" };
@@ -182,10 +182,10 @@ export function useRyoChat({
   );
 
   return {
-    ryoMessages,
-    isRyoLoading,
-    stopRyo,
-    handleRyoMention,
+    ketoMessages,
+    isKetoLoading,
+    stopKeto,
+    handleKetoMention,
     detectAndProcessMention,
   };
 }
