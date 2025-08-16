@@ -39,10 +39,10 @@ export const appMetadata = {
   name: "Control Panels",
   version: "1.0.0",
   creator: {
-    name: "Ryo Lu",
-    url: "https://ryo.lu",
+    name: "Keto Khamkhounmavong",
+    url: "https://keto.kh",
   },
-  github: "https://github.com/ryokun6/ryos",
+  github: "https://github.com/codekirua/KetoOS",
   icon: "/icons/control-panels/appearance-manager/app.png",
 };
 
