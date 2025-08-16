@@ -43,10 +43,10 @@ export const appMetadata = {
   name: "Chats",
   version: "1.0",
   creator: {
-    name: "Keto Lu",
-    url: "https://Keto.lu",
+    name: "Keto Khamkhounmavong",
+    url: "https://keto.kh",
   },
-  github: "https://github.com/Ketokun6/Ketos",
+  github: "https://github.com/codekiura/KetOS",
   icon: "/icons/default/question.png",
 };
 
