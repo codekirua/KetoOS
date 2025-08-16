@@ -2083,7 +2083,7 @@ export function TerminalAppComponent({
           id: "system",
           role: "system",
           content:
-            "You are a coding assistant running in the terminal app on ryOS.",
+            "You are a coding assistant running in the terminal app on KetoOS.",
         },
       ]);
 
@@ -2117,7 +2117,7 @@ export function TerminalAppComponent({
           id: "system",
           role: "system",
           content:
-            "You are a coding assistant running in the terminal app on ryOS.",
+            "You are a coding assistant running in the terminal app on KetoOS.",
         },
       ]);
 
@@ -2864,7 +2864,7 @@ export function TerminalAppComponent({
             name: "Terminal",
             version: "1.0",
             creator: {
-              name: "Ryo Lu",
+              name: "Keto Khamkhounmavong",
               url: "https://ryo.lu",
             },
             github: "https://github.com/ryokun6/ryos",

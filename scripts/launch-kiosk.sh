@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ryOS Kiosk Mode Launcher
-# Launches ryOS in full-screen kiosk mode using Chromium browser
+# KetoOS Kiosk Mode Launcher
+# Launches KetoOS in full-screen kiosk mode using Chromium browser
 
 
 # Launch Chromium in kiosk mode with proper flags for Raspberry Pi

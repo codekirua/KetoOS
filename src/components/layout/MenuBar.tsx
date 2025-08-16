@@ -49,7 +49,7 @@ const finderMetadata = {
   name: "Finder",
   version: "1.0.0",
   creator: {
-    name: "Ryo Lu",
+    name: "Keto Khamkhounmavong",
     url: "https://ryo.lu",
   },
   github: "https://github.com/ryokun6/ryos",

@@ -82,7 +82,7 @@ export function AboutFinderDialog({
                     : "font-apple-garamond text-2xl"
                 )}
               >
-                ryOS
+                KetoOS
                 {currentTheme === "system7"
                   ? " 7"
                   : currentTheme === "macosx"
@@ -112,9 +112,7 @@ export function AboutFinderDialog({
               <div>
                 <div>Built-in Memory: 32MB</div>
                 <div>Virtual Memory: Off</div>
-                <div>
-                  Largest Unused Block: {(32 - totalUsedMemory).toFixed(1)}MB
-                </div>
+                <div>Largest Unused Block: {(32 - totalUsedMemory).toFixed(1)}MB</div>
                 <div
                   className={cn(
                     "text-[10px] text-gray-500 mt-2",
@@ -128,7 +126,7 @@ export function AboutFinderDialog({
                       : undefined,
                   }}
                 >
-                  © Ryo Lu. 1992-{new Date().getFullYear()}
+                  © Keto Khamkhounmavong. 1992-{new Date().getFullYear()}
                 </div>
               </div>
             </div>
@@ -203,7 +201,7 @@ export function AboutFinderDialog({
                 About This Computer
               </DialogTitle>
               <DialogDescription className="sr-only">
-                Information about ryOS on this computer
+                Information about KetoOS on this computer
               </DialogDescription>
             </DialogHeader>
             {dialogContent}
