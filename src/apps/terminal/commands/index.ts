@@ -34,7 +34,7 @@ export const commands: Record<string, Command> = {
   about: aboutCommand,
   ai: aiCommand,
   chat: chatCommand,
-  ryo: ryoCommand,
+  keto: ryoCommand,
   vim: vimCommand,
 };
 
