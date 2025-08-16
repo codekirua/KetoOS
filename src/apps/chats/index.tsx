@@ -6,7 +6,7 @@ export const helpItems = [
     icon: "💬",
     title: "Chat with Keto",
     description:
-      "Type your message to chat with Keto, generate code, or help with KetoS.",
+      "Type your message to chat with Keto, generate code, or help with KetoOS.",
   },
   {
     icon: "#️⃣",
