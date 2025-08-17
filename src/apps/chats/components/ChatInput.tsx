@@ -620,7 +620,7 @@ export function ChatInput({
               transition={{ duration: 0.15 }}
               className="mt-2 px-1 text-xs text-neutral-700 font-geneva-12"
             >
-              {isTypingKetooMention
+              {isTypingKetoMention
                 ? `Keto will respond to this message${
                     debugMode && modelDisplayName
                       ? ` (${modelDisplayName})`
