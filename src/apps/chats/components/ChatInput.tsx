@@ -56,7 +56,7 @@ interface ChatInputProps {
   previousMessages?: string[];
   /**
    * Whether to display the "nudge" (👋) button. Defaults to true so that the
-   * button is shown in the regular Ryo chat, and can be disabled for chat-room
+   * button is shown in the regular Keto chat, and can be disabled for chat-room
    * contexts where nudging is not available.
    */
   showNudgeButton?: boolean;
@@ -116,7 +116,7 @@ export function ChatInput({
   const modelDisplayName = aiModel ? AI_MODELS[aiModel]?.name : null;
 
   // Check if user is typing @keto
-  const isTypingRyoMention =
+  const isTypingKetoMention =
     isInChatRoom && (input.startsWith("@keto ") || input === "@keto");
 
   useEffect(() => {
@@ -342,7 +342,7 @@ export function ChatInput({
                   isMacTheme ? "pl-3 pr-16 rounded-full" : "pl-2 pr-16"
                 } backdrop-blur-lg bg-white/80 ${
                   isFocused ? "input--focused" : ""
-                } ${isTypingRyoMention ? "border-blue-600 bg-blue-50" : ""} ${
+                } ${isTypingKetoMention ? "border-blue-600 bg-blue-50" : ""} ${
                   needsUsername && !isInChatRoom
                     ? "border-orange-600 bg-orange-50"
                     : ""
@@ -412,14 +412,14 @@ export function ChatInput({
                                 : ""
                             }`}
                             disabled={isLoading}
-                            aria-label="Mention Ryo"
+                            aria-label="Mention Keto"
                           >
                             <AtSign className="h-4 w-4" />
                           </button>
                         </div>
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>Mention Ryo</p>
+                        <p>Mention Keto</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
@@ -610,7 +610,7 @@ export function ChatInput({
           </AnimatePresence>
         </form>
         <AnimatePresence>
-          {(isTypingRyoMention ||
+          {(isTypingKetoMention ||
             (!isInChatRoom && debugMode && modelDisplayName)) && (
             <motion.div
               key="model-info"
@@ -620,8 +620,8 @@ export function ChatInput({
               transition={{ duration: 0.15 }}
               className="mt-2 px-1 text-xs text-neutral-700 font-geneva-12"
             >
-              {isTypingRyoMention
-                ? `Ryo will respond to this message${
+              {isTypingKetooMention
+                ? `Keto will respond to this message${
                     debugMode && modelDisplayName
                       ? ` (${modelDisplayName})`
                       : ""
