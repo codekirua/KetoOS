@@ -847,8 +847,9 @@ export function useAiChat(onPromptSetUsername?: () => void) {
     }
   }, [username, needsUsername]);
 
+  // ⬇️ FIXED: ensure token before sending form submit
   const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
+    async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       const messageContent = input;
       if (!messageContent.trim()) return;
@@ -861,17 +862,21 @@ export function useAiChat(onPromptSetUsername?: () => void) {
         return;
       }
 
+      // ensure we have a fresh token BEFORE sending
+      await ensureAuthToken();
+
       setRateLimitError(null);
       const freshSystemState = getSystemState();
       originalHandleSubmit(e, {
         body: { systemState: freshSystemState, model: aiModel },
       });
     },
-    [originalHandleSubmit, input, needsUsername, username, aiModel]
+    [originalHandleSubmit, input, needsUsername, username, aiModel, ensureAuthToken]
   );
 
+  // ⬇️ FIXED: ensure token before sending direct message
   const handleDirectMessageSubmit = useCallback(
-    (message: string) => {
+    async (message: string) => {
       if (!message.trim()) return;
       if (needsUsername && !username) {
         toast.error("Login Required", {
@@ -880,13 +885,17 @@ export function useAiChat(onPromptSetUsername?: () => void) {
         });
         return;
       }
+
+      // ensure we have a fresh token BEFORE sending
+      await ensureAuthToken();
+
       setRateLimitError(null);
       append(
         { content: message, role: "user" },
         { body: { systemState: getSystemState(), model: aiModel } }
       );
     },
-    [append, needsUsername, username, aiModel]
+    [append, needsUsername, username, aiModel, ensureAuthToken]
   );
 
   const handleNudge = useCallback(() => {
