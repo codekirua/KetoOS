@@ -177,19 +177,17 @@ export function ChatsAppComponent({
     (remainingCount > 0 ? `, ${remainingCount}+` : "");
 
   // Use the @keto chat hook — pass auth so @keto requests are authenticated
-  const { isKetoLoading, stopKeto, handleKetoMention, detectAndProcessMention } =
-    useKetoChat({
-      currentRoomId,
-      authToken, // ✅ forward token
-      username,  // ✅ forward username
-      onScrollToBottom: () => setScrollToBottomTrigger((prev) => prev + 1),
-      roomMessages: currentRoomMessages?.map((msg: AppChatMessage) => ({
-        username: msg.username,
-        content: msg.content,
-        userId: msg.id,
-        timestamp: new Date(msg.timestamp).toISOString(),
-      })),
-    });
+ const { isKetoLoading, stopKeto, handleKetoMention, detectAndProcessMention } =
+  useKetoChat({
+    currentRoomId,
+    onScrollToBottom: () => setScrollToBottomTrigger((prev) => prev + 1),
+    roomMessages: currentRoomMessages?.map((msg: AppChatMessage) => ({
+      username: msg.username,
+      content: msg.content,
+      userId: msg.id,
+      timestamp: new Date(msg.timestamp).toISOString(),
+    })),
+  });
 
   // Wrapper for room selection that handles unread scroll triggering
   const handleRoomSelectWithScroll = useCallback(
