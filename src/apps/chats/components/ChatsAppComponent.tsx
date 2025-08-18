@@ -54,40 +54,7 @@ export function ChatsAppComponent({
   const authResult = useAuth();
   const { promptSetUsername } = authResult;
 
-  // Get room functionality from useChatRoom
-  const chatRoomResult = useChatRoom(isWindowOpen ?? false, promptSetUsername);
-
-  const {
-    messages,
-    input,
-    handleInputChange,
-    handleSubmit: handleAiSubmit,
-    isLoading,
-    reload,
-    error,
-    stop,
-    isSpeaking,
-    handleDirectMessageSubmit,
-    handleNudge,
-    handleSaveTranscript,
-    isClearDialogOpen,
-    setIsClearDialogOpen,
-    confirmClearChats,
-    isSaveDialogOpen,
-    setIsSaveDialogOpen,
-    saveFileName,
-    setSaveFileName,
-    handleSaveSubmit,
-    highlightSegment,
-    rateLimitError,
-    needsUsername,
-  } = useAiChat({
-  promptSetUsername,
-  authToken,
-  username,
-});
-
-  // Destructure auth properties from authResult
+  // ✅ Destructure auth early so username/authToken exist for all hooks & UI
   const {
     username,
     authToken,
@@ -117,6 +84,40 @@ export function ChatsAppComponent({
     isLogoutConfirmDialogOpen,
     setIsLogoutConfirmDialogOpen,
   } = authResult;
+
+  // Get room functionality from useChatRoom
+  const chatRoomResult = useChatRoom(isWindowOpen ?? false, promptSetUsername);
+
+  const {
+    messages,
+    input,
+    handleInputChange,
+    // NOTE: we alias handleSubmit from useAiChat hook below
+    handleSubmit: handleAiSubmit,
+    isLoading,
+    reload,
+    error,
+    stop,
+    isSpeaking,
+    handleDirectMessageSubmit,
+    handleNudge,
+    handleSaveTranscript,
+    isClearDialogOpen,
+    setIsClearDialogOpen,
+    confirmClearChats,
+    isSaveDialogOpen,
+    setIsSaveDialogOpen,
+    saveFileName,
+    setSaveFileName,
+    handleSaveSubmit,
+    highlightSegment,
+    rateLimitError,
+    needsUsername,
+    // 🔽 the rest returned by useAiChat stays the same
+  } = useAiChat(
+    // ✅ AI chat uses the login prompt callback; it reads auth from the store internally
+    promptSetUsername
+  );
 
   // Destructure room properties from chatRoomResult
   const {
@@ -175,10 +176,12 @@ export function ChatsAppComponent({
     displayNames.join(", ") +
     (remainingCount > 0 ? `, ${remainingCount}+` : "");
 
-  // Use the @keto chat hook
+  // Use the @keto chat hook — pass auth so @keto requests are authenticated
   const { isKetoLoading, stopKeto, handleKetoMention, detectAndProcessMention } =
     useKetoChat({
       currentRoomId,
+      authToken, // ✅ forward token
+      username,  // ✅ forward username
       onScrollToBottom: () => setScrollToBottomTrigger((prev) => prev + 1),
       roomMessages: currentRoomMessages?.map((msg: AppChatMessage) => ({
         username: msg.username,
