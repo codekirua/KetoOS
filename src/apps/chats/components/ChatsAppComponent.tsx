@@ -81,7 +81,11 @@ export function ChatsAppComponent({
     highlightSegment,
     rateLimitError,
     needsUsername,
-  } = useAiChat(promptSetUsername); // Pass promptSetUsername to useAiChat
+  } = useAiChat({
+  promptSetUsername,
+  authToken,
+  username,
+});
 
   // Destructure auth properties from authResult
   const {
